@@ -28,9 +28,9 @@
 
 
     <EditText
-        android:id="@+id/editText1"
-        android:layout_width="162dp"
-        android:layout_height="42dp"
+        android:id="@+id/edittext1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:text="@string/text2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,31 +38,31 @@
         app:layout_constraintTop_toBottomOf="@+id/textView1" />
 
     <EditText
-        android:id="@+id/editText2"
-        android:layout_width="167dp"
-        android:layout_height="41dp"
+        android:id="@+id/edittext2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/text7"
-        app:layout_constraintBottom_toTopOf="@+id/editText3"
+        app:layout_constraintBottom_toTopOf="@+id/edittext3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText1"
+        app:layout_constraintTop_toBottomOf="@+id/edittext1"
         app:layout_constraintVertical_bias="0.281" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/edittext3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="28dp"
         android:text="@string/text3"
-        app:layout_constraintBottom_toTopOf="@+id/editText4"
+        app:layout_constraintBottom_toTopOf="@+id/edittext4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/editText4"
-        android:layout_width="162dp"
-        android:layout_height="47dp"
+        android:id="@+id/edittext4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="48dp"
         android:text="@string/text4"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
@@ -85,7 +85,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="88dp"
-        android:onClick="addMeal"
         android:text="@string/text6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -98,13 +97,4 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="20dp" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="getStudents"
-        android:text="Button"
-        tools:layout_editor_absoluteX="12dp"
-        tools:layout_editor_absoluteY="674dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
