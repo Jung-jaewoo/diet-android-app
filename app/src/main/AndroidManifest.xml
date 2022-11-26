@@ -16,7 +16,7 @@
             android:name="com.example.mydietandroidapp.MyContentProvider"
             android:authorities="com.example.mydietandroidapp.MyContentProvider"
             android:enabled="true"
-            android:exported="true"></provider>
+            android:exported="true"/>
 
         <activity
             android:name=".MainActivity"
