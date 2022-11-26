@@ -14,9 +14,10 @@ public class MealDBManager extends SQLiteOpenHelper {
 
     // 음식 사진과 식사 장소도 추가해야함.
     static final String CREATE_DB = " CREATE TABLE " + MEAL_TABLE +
-            " (_id INTEGER PRIMARY KEY AUTOINCREMENT," +
-            " name TEXT NOT NULL, meal_count INTEGER NOT NULL," +
-            " review TEXT NOT NULL, meal_time INTEGER NOT NULL);";
+            " (_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            " meal_id TEXT NOT NULL, name TEXT NOT NULL," +
+            " meal_count INT NOT NULL, review TEXT NOT NULL," +
+            " meal_time INT NOT NULL);";
 
     public static MealDBManager getInstance(Context context) {
         if(dbManager == null){
