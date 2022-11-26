@@ -33,7 +33,7 @@ public class MyContentProvider extends ContentProvider {
 
     @Override
     public Uri insert(Uri uri, ContentValues values) {
-        long rowid = dbManager.insert(values);
+        long rowId = dbManager.insert(values);
         return null;
     }
 
