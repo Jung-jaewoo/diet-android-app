@@ -1,6 +1,7 @@
-# diet-android-app
+# diet-android-app 🍕
 
-## 기능
+
+## 📚 기능
  - 식사 입력하기
    - 음식 사진 입력
    - 음식 이름 및 수량 입력
