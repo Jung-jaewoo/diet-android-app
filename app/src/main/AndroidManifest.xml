@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyDietAndroidApp"
         tools:targetApi="31">
+        <provider
+            android:name="com.example.mydietandroidapp.MyContentProvider"
+            android:authorities="com.example.mydietandroidapp.MyContentProvider"
+            android:enabled="true"
+            android:exported="true"></provider>
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
