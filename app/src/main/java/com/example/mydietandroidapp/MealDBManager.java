@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class MealDBManager extends SQLiteOpenHelper {
     static final String MEAL_DB = "Meal.db";
@@ -19,14 +20,14 @@ public class MealDBManager extends SQLiteOpenHelper {
             " review TEXT NOT NULL, meal_time INTEGER NOT NULL);";
 
     public static MealDBManager getInstance(Context context) {
-        if(dbManager == null){
+        if (dbManager == null) {
             dbManager = new MealDBManager(context, MEAL_DB, null, 1);
         }
         return dbManager;
     }
 
     public MealDBManager(Context context, String dbName, SQLiteDatabase.CursorFactory factory,
-                         int version){
+                         int version) {
         super(context, dbName, factory, version);
         this.context = context;
     }
@@ -42,7 +43,7 @@ public class MealDBManager extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldV, int newV){
+    public void onUpgrade(SQLiteDatabase db, int oldV, int newV) {
 
     }
 
@@ -50,10 +51,11 @@ public class MealDBManager extends SQLiteOpenHelper {
         return getWritableDatabase().insert(MEAL_TABLE, null, addValue);
     }
 
-    public Cursor query(String [] columns, String selection, String[] selectionArgs,
-                        String groupBy, String having, String orderBy){
+    public Cursor query(String[] columns, String selection, String[] selectionArgs,
+                        String groupBy, String having, String orderBy) {
         return getReadableDatabase().query(MEAL_TABLE, columns, selection, selectionArgs, groupBy, having, orderBy);
     }
+
     public int delete(String whereClause, String[] whereArgs) {
         return getWritableDatabase().delete(MEAL_TABLE, whereClause,
                 whereArgs);
