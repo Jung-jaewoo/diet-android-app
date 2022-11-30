@@ -14,6 +14,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     private final int GET_GALLERY_IMAGE = 200;
     private ImageView imageView;
     private Uri imageUri;
+    public static ArrayList<Meal> mealsInfo = new ArrayList<>();
+    Button navigate_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         imageView = findViewById(R.id.image_view);
+
+        navigate_btn = (Button) findViewById(R.id.navigate_btn);
+        navigate_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent("com.example.mydietandroidapp.LAUNCH");
+                startActivity(intent);
+            }
+        });
     }
 
     // 갤러리 여는 코드
@@ -53,7 +65,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // 여기까지
+    public void navigateMealList(View view) {
+        Intent intent = new Intent(".MainActivity2");
+        startActivity(intent);
+    }
+
 
     public void addMeal(View view) {
 
@@ -68,15 +84,14 @@ public class MainActivity extends AppCompatActivity {
         addValues.put(MyContentProvider.MEAL_TIME,
                 Integer.parseInt(((EditText) findViewById(R.id.editText4)).getText().toString()));
 
-//        if (imageUri != null) {
-//            System.out.println("dssfd");
-//            addValues.put(MyContentProvider.IMAGE_URI,
-//                    imageUri.toString()
-//            );
-//        } else {
-//            addValues.put(MyContentProvider.IMAGE_URI,
-//                    "image");
-//        }
+        if (imageUri != null) {
+            addValues.put(MyContentProvider.IMAGE_URI,
+                    imageUri.toString()
+            );
+        } else {
+            addValues.put(MyContentProvider.IMAGE_URI,
+                    "no image");
+        }
 
         getContentResolver().insert(MyContentProvider.CONTENT_URI, addValues);
 
@@ -86,26 +101,26 @@ public class MainActivity extends AppCompatActivity {
 
     public void getStudents(View view) {
         String[] columns = new String[]{"_id", "name",
-                "meal_count", "review", "meal_time"};
+                "meal_count", "review", "meal_time", "image_uri"};
         Cursor c = getContentResolver().query(MyContentProvider.CONTENT_URI, columns, null,
                 null, null, null);
         if (c != null) {
-            EditText editMultipleText = findViewById(R.id.editText4);
-            editMultipleText.setText("");
             while (c.moveToNext()) {
                 int id = c.getInt(0);
                 String name = c.getString(1);
                 int meal_count = c.getInt(2);
                 String review = c.getString(3);
                 int meal_time = c.getInt(4);
+                String image_uri = c.getString(5);
 
-
-                editMultipleText.append("id: " + id + "\n name: " + name + "\n meal_count: " +
-                        meal_count + "\n review: " + review + "\n meal_time: " + meal_time
-                );
+//                editMultipleText.append("id: " + id + "\n name: " + name + "\n meal_count: " +
+//                        meal_count + "\n review: " + review + "\n meal_time: " + meal_time + "\nimage" + image_uri
+//                );
+                mealsInfo.add(new Meal(name, meal_count, review, meal_time, image_uri));
             }
-            editMultipleText.append("\n Total : " + c.getCount());
+//            editMultipleText.append("\n Total : " + c.getCount());
             c.close();
         }
     }
+
 }

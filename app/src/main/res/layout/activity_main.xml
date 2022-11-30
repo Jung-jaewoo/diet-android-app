@@ -22,6 +22,7 @@
         android:layout_height="88dp"
         android:layout_marginTop="76dp"
         android:layout_marginEnd="96dp"
+        android:onClick="onClickGallery"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_gallery" />
@@ -32,7 +33,7 @@
         android:layout_height="42dp"
         android:layout_marginTop="48dp"
         android:layout_marginBottom="4dp"
-        android:text="@string/text2"
+        android:hint="@string/text2"
         app:layout_constraintBottom_toTopOf="@+id/editText2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +45,7 @@
         android:layout_height="41dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="4dp"
-        android:text="@string/text7"
+        android:hint="@string/text7"
         app:layout_constraintBottom_toTopOf="@+id/editText3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,7 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
-        android:text="@string/text3"
+        android:hint="@string/text3"
         app:layout_constraintBottom_toTopOf="@+id/editText4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -66,7 +67,7 @@
         android:layout_width="162dp"
         android:layout_height="47dp"
         android:layout_marginBottom="4dp"
-        android:text="@string/text4"
+        android:hint="@string/text4"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -111,10 +112,10 @@
         tools:layout_editor_absoluteY="674dp" />
 
     <Button
-        android:id="@+id/upload_btn"
+        android:id="@+id/navigate_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onClickGallery"
+        android:onClick="navigateMealList"
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
