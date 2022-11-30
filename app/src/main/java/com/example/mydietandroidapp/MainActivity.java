@@ -85,18 +85,22 @@ public class MainActivity extends AppCompatActivity {
                 Integer.parseInt(((EditText) findViewById(R.id.editText4)).getText().toString()));
 
         if (imageUri != null) {
+
             addValues.put(MyContentProvider.IMAGE_URI,
                     imageUri.toString()
             );
         } else {
             addValues.put(MyContentProvider.IMAGE_URI,
-                    "no image");
+                    "no image" );
         }
-
+//        System.out.println(imageUri.toString());
+        System.out.println(getPackageName());
         getContentResolver().insert(MyContentProvider.CONTENT_URI, addValues);
 
+        imageUri = null;
         Toast.makeText(getBaseContext(),
                 "Record Added", Toast.LENGTH_LONG).show();
+
     }
 
     public void getStudents(View view) {
@@ -113,12 +117,8 @@ public class MainActivity extends AppCompatActivity {
                 int meal_time = c.getInt(4);
                 String image_uri = c.getString(5);
 
-//                editMultipleText.append("id: " + id + "\n name: " + name + "\n meal_count: " +
-//                        meal_count + "\n review: " + review + "\n meal_time: " + meal_time + "\nimage" + image_uri
-//                );
                 mealsInfo.add(new Meal(name, meal_count, review, meal_time, image_uri));
             }
-//            editMultipleText.append("\n Total : " + c.getCount());
             c.close();
         }
     }

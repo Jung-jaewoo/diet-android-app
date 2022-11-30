@@ -47,7 +47,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public void onBindViewHolder(MyAdapter.MyViewHolder holder, final int
             position) {
         MyViewHolder myViewHolder = (MyViewHolder) holder;
-        myViewHolder.myPicture.setImageURI(Uri.parse(myMealList.get(position).getImage_uri()));
+        if(myMealList.get(position).getImage_uri().equals("no image")){
+            myViewHolder.myPicture.setImageResource(R.drawable.defaultimg);
+        }else{
+            myViewHolder.myPicture.setImageURI(Uri.parse(myMealList.get(position).getImage_uri()));
+        }
         myViewHolder.name.setText(myMealList.get(position).getName());
         myViewHolder.count.setText(myMealList.get(position).getMeal_count() + "");
         myViewHolder.review.setText(myMealList.get(position).getReview());
