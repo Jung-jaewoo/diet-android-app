@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
-        android:layout_marginTop="148dp"
+        android:layout_marginTop="100dp"
         android:text="@string/text1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -20,34 +20,36 @@
         android:id="@+id/image_view"
         android:layout_width="94dp"
         android:layout_height="88dp"
-        android:layout_marginTop="76dp"
-        android:layout_marginEnd="96dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="100dp"
         android:onClick="onClickGallery"
+        app:layout_constraintBottom_toTopOf="@+id/editText3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@android:drawable/ic_menu_gallery" />
 
     <EditText
         android:id="@+id/editText1"
         android:layout_width="162dp"
         android:layout_height="42dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginTop="8dp"
         android:hint="@string/text2"
         app:layout_constraintBottom_toTopOf="@+id/editText2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView1" />
+        app:layout_constraintTop_toBottomOf="@+id/editText3" />
 
     <EditText
         android:id="@+id/editText2"
         android:layout_width="167dp"
         android:layout_height="41dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginTop="8dp"
         android:hint="@string/text7"
-        app:layout_constraintBottom_toTopOf="@+id/editText3"
+        app:layout_constraintBottom_toTopOf="@+id/textView_date"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText1"
         app:layout_constraintVertical_bias="0.281" />
@@ -56,38 +58,45 @@
         android:id="@+id/editText3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginBottom="8dp"
         android:hint="@string/text3"
-        app:layout_constraintBottom_toTopOf="@+id/editText4"
+        app:layout_constraintBottom_toTopOf="@+id/editText1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/editText4"
-        android:layout_width="162dp"
-        android:layout_height="47dp"
-        android:layout_marginBottom="4dp"
-        android:hint="@string/text4"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textView_date"
+        android:layout_width="150dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="125dp"
+        android:layout_marginBottom="20dp"
+        android:hint="@string/text4"
+        app:layout_constraintBottom_toTopOf="@+id/textView_time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+
+    <TextView
+        android:id="@+id/textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="180dp"
+        android:layout_marginBottom="128dp"
         android:text="@string/text5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.067"
+        app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="88dp"
+        android:layout_marginBottom="48dp"
         android:onClick="addMeal"
         android:text="@string/text6"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -119,4 +128,38 @@
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="52dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="220dp"
+        android:onClick="OnClickDateHandler"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.925"
+        app:layout_constraintStart_toEndOf="@+id/editText4" />
+
+    <TextView
+        android:id="@+id/textView_time"
+        android:layout_width="116dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="144dp"
+        android:layout_marginTop="24dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_date" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="61dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="32dp"
+        android:onClick="OnClickTimeHandler"
+        android:text="Button"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/button3" />
 </androidx.constraintlayout.widget.ConstraintLayout>
