@@ -14,6 +14,7 @@ public class MyContentProvider extends ContentProvider {
     static final String NAME = "name";
     static final String MEAL_COUNT = "meal_count";
     static final String REVIEW = "review";
+    static final String MEAL_DATE = "meal_date";
     static final String MEAL_TIME = "meal_time";
     static final String IMAGE_URI = "image_uri";
 

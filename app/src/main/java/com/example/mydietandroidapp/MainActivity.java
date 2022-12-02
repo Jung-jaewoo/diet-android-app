@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
     private final int GET_GALLERY_IMAGE = 200;
     private ImageView imageView;
     private Uri imageUri;
-    public static ArrayList<Meal> mealsInfo = new ArrayList<>();
     Button navigate_btn;
     private TextView textView_Date;
     private TextView textView_Time;
@@ -70,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         dateCallbackMethod = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                textView_Date.setText(year + "년 " + month + "월 " + day + "일");
+                textView_Date.setText(year + "년 " + (month + 1) + "월 " + day + "일");
             }
         };
     }
@@ -134,9 +133,12 @@ public class MainActivity extends AppCompatActivity {
                 Integer.parseInt(((EditText) findViewById(R.id.editText2)).getText().toString()));
         addValues.put(MyContentProvider.REVIEW,
                 ((EditText) findViewById(R.id.editText3)).getText().toString());
+        addValues.put(MyContentProvider.MEAL_DATE,
+                ((TextView) findViewById(R.id.textView_date)).getText().toString());
         addValues.put(MyContentProvider.MEAL_TIME,
-                Integer.parseInt(((EditText) findViewById(R.id.editText4)).getText().toString()));
+                ((TextView) findViewById(R.id.textView_time)).getText().toString());
 
+        System.out.println(((TextView) findViewById(R.id.textView_time)).getText().toString());
         if (imageUri != null) {
 
             addValues.put(MyContentProvider.IMAGE_URI,
@@ -156,24 +158,5 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void getStudents(View view) {
-        String[] columns = new String[]{"_id", "name",
-                "meal_count", "review", "meal_time", "image_uri"};
-        Cursor c = getContentResolver().query(MyContentProvider.CONTENT_URI, columns, null,
-                null, null, null);
-        if (c != null) {
-            while (c.moveToNext()) {
-                int id = c.getInt(0);
-                String name = c.getString(1);
-                int meal_count = c.getInt(2);
-                String review = c.getString(3);
-                int meal_time = c.getInt(4);
-                String image_uri = c.getString(5);
-
-                mealsInfo.add(new Meal(name, meal_count, review, meal_time, image_uri));
-            }
-            c.close();
-        }
-    }
 
 }

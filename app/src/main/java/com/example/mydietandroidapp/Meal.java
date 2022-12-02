@@ -6,10 +6,10 @@ public class Meal {
     String name;
     int meal_count;
     String review;
-    int meal_time;
+    String meal_time;
     String image_uri;
 
-    public Meal(String name, int meal_count, String review, int meal_time, String image_uri){
+    public Meal(String name, int meal_count, String review, String meal_time, String image_uri){
         this.name = name;
         this.meal_count = meal_count;
         this.review = review;
@@ -25,7 +25,7 @@ public class Meal {
         return review;
     }
 
-    public int getMeal_time() {
+    public String getMeal_time() {
         return meal_time;
     }
 
