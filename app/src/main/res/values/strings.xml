@@ -7,4 +7,6 @@
     <string name="text4">식사 시간 입력</string>
     <string name="text5">구글 맵을 통한 식사 장소 입력</string>
     <string name="text6">식사 입력</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="text8">지도</string>
 </resources>

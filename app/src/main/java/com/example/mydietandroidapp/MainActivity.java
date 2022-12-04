@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         InitializeDateView();
         InitializeTimeView();
         InitializeDateListener();
@@ -88,8 +89,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void OnClickTimeHandler(View view)
-    {
+    public void OnClickTimeHandler(View view) {
         TimePickerDialog dialog = new TimePickerDialog(this, timeCallbackMethod, 8, 10, true);
 
         dialog.show();
@@ -122,6 +122,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void navigateGoogleMap(View view) {
+        Intent intent = new Intent(".MapsActivity");
+        startActivity(intent);
+    }
 
     public void addMeal(View view) {
 
@@ -157,6 +161,5 @@ public class MainActivity extends AppCompatActivity {
                 "Record Added", Toast.LENGTH_LONG).show();
 
     }
-
 
 }
