@@ -35,6 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="524dp"
+        android:onClick="navigateGoogleMap"
         android:text="@string/textInputFoodPlace"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"
@@ -131,18 +132,15 @@
 
     <com.google.android.gms.maps.MapView
         android:id="@+id/mapView"
+        android:name="com.google.android.gms.maps.MapFragment"
         android:layout_width="123dp"
         android:layout_height="108dp"
         android:layout_marginBottom="200dp"
+        android:foreground="@android:drawable/ic_dialog_map"
+        android:onClick="navigateGoogleMap"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrier2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="left" />
 
     <ImageView
         android:id="@+id/image_view"

@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private DatePickerDialog.OnDateSetListener dateCallbackMethod;
     private TimePickerDialog.OnTimeSetListener timeCallbackMethod;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         InitializeTimeView();
         InitializeDateListener();
         InitializeTimeListener();
+
     }
 
     public void InitializeDateView() {
