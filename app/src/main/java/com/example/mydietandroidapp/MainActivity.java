@@ -1,22 +1,13 @@
 package com.example.mydietandroidapp;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.ContentValues;
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -25,10 +16,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private final int GET_GALLERY_IMAGE = 200;
@@ -63,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void InitializeDateView() {
-        textView_Date = (TextView) findViewById(R.id.textView_date);
+        textView_Date = (TextView) findViewById(R.id.mealDate);
     }
 
     public void InitializeDateListener() {
@@ -76,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void InitializeTimeView() {
-        textView_Time = (TextView) findViewById(R.id.textView_time);
+        textView_Time = (TextView) findViewById(R.id.mealTime);
     }
 
     public void InitializeTimeListener() {
@@ -132,17 +119,17 @@ public class MainActivity extends AppCompatActivity {
         // 음식 사진과 식사 장소 입력 부 추가해야함.
         ContentValues addValues = new ContentValues();
         addValues.put(MyContentProvider.NAME,
-                ((EditText) findViewById(R.id.editText1)).getText().toString());
+                ((EditText) findViewById(R.id.foodName)).getText().toString());
         addValues.put(MyContentProvider.MEAL_COUNT,
-                Integer.parseInt(((EditText) findViewById(R.id.editText2)).getText().toString()));
+                Integer.parseInt(((EditText) findViewById(R.id.mealCount)).getText().toString()));
         addValues.put(MyContentProvider.REVIEW,
-                ((EditText) findViewById(R.id.editText3)).getText().toString());
+                ((EditText) findViewById(R.id.mealReview)).getText().toString());
         addValues.put(MyContentProvider.MEAL_DATE,
-                ((TextView) findViewById(R.id.textView_date)).getText().toString());
+                ((TextView) findViewById(R.id.mealDate)).getText().toString());
         addValues.put(MyContentProvider.MEAL_TIME,
-                ((TextView) findViewById(R.id.textView_time)).getText().toString());
+                ((TextView) findViewById(R.id.mealTime)).getText().toString());
 
-        System.out.println(((TextView) findViewById(R.id.textView_time)).getText().toString());
+        System.out.println(((TextView) findViewById(R.id.mealTime)).getText().toString());
         if (imageUri != null) {
 
             addValues.put(MyContentProvider.IMAGE_URI,

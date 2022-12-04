@@ -9,7 +9,7 @@ public class Meal {
     String meal_time;
     String image_uri;
 
-    public Meal(String name, int meal_count, String review, String meal_time, String image_uri){
+    public Meal(String name, int meal_count, String review, String meal_time, String image_uri) {
         this.name = name;
         this.meal_count = meal_count;
         this.review = review;
