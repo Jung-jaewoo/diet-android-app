@@ -17,7 +17,7 @@ public class MealDBManager extends SQLiteOpenHelper {
     static final String CREATE_DB = " CREATE TABLE " + MEAL_TABLE +
             " (_id INTEGER PRIMARY KEY AUTOINCREMENT," +
             " name TEXT NOT NULL, meal_count INTEGER NOT NULL," +
-            " review TEXT NOT NULL, meal_time INTEGER NOT NULL, image_uri TEXT);";
+            " review TEXT NOT NULL, meal_date TEXT NOT NULL, meal_time TEXT NOT NULL, image_uri TEXT);";
 
     public static MealDBManager getInstance(Context context) {
         if (dbManager == null) {

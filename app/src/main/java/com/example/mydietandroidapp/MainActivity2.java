@@ -46,6 +46,7 @@ public class MainActivity2 extends AppCompatActivity {
                 "meal_count", "review", "meal_date", "meal_time", "image_uri"};
         Cursor c = getContentResolver().query(MyContentProvider.CONTENT_URI, columns, null,
                 null, null, null);
+        System.out.println("date" + date);
         if (c != null) {
             while (c.moveToNext()) {
                 int id = c.getInt(0);
@@ -55,7 +56,6 @@ public class MainActivity2 extends AppCompatActivity {
                 String meal_date = c.getString(4);
                 String meal_time = c.getString(5);
                 String image_uri = c.getString(6);
-                System.out.println("date" + date);
                 System.out.println(meal_date);
                 if (meal_date.equals(date)) {
                     mealsInfo.add(new Meal(name, meal_count, review, meal_time, image_uri));
