@@ -9,4 +9,7 @@
     <string name="textInputFood">식사 입력</string>
     <string name="title_activity_maps">MapsActivity</string>
     <string name="textMap">지도</string>
+    <string name="textInputMeal">식사 입력하기</string>
+    <string name="textShowMeal">식사 보기</string>
+    <string name="textAnalyzeMeal">식사 분석</string>
 </resources>

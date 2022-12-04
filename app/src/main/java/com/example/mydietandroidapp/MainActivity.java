@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private final int GET_GALLERY_IMAGE = 200;
     private ImageView imageView;
     private Uri imageUri;
-    Button navigate_btn;
+    Button navigate_btn2;
     private TextView textView_Date;
     private TextView textView_Time;
     private DatePickerDialog.OnDateSetListener dateCallbackMethod;
@@ -35,11 +35,11 @@ public class MainActivity extends AppCompatActivity {
 
         imageView = findViewById(R.id.image_view);
 
-        navigate_btn = (Button) findViewById(R.id.navigate_btn);
-        navigate_btn.setOnClickListener(new View.OnClickListener() {
+        navigate_btn2 = (Button) findViewById(R.id.navigate_btn2);
+        navigate_btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent("com.example.mydietandroidapp.LAUNCH");
+                Intent intent = new Intent("com.example.mydietandroidapp.LAUNCH2");
                 startActivity(intent);
             }
         });
@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
         InitializeTimeView();
         InitializeDateListener();
         InitializeTimeListener();
-
     }
 
     public void InitializeDateView() {
@@ -75,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
                 textView_Time.setText(hour + "시" + min + "분");
             }
         };
-
     }
 
     public void OnClickTimeHandler(View view) {
@@ -104,11 +102,6 @@ public class MainActivity extends AppCompatActivity {
             imageUri = data.getData();
             imageView.setImageURI(imageUri);
         }
-    }
-
-    public void navigateMealList(View view) {
-        Intent intent = new Intent(".MainActivity2");
-        startActivity(intent);
     }
 
     public void navigateGoogleMap(View view) {

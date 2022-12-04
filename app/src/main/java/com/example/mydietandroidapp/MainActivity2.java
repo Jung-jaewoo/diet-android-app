@@ -39,7 +39,6 @@ public class MainActivity2 extends AppCompatActivity {
         });
     }
 
-
     public void getStudents() {
         mealsInfo = new ArrayList<>();
         String[] columns = new String[]{"_id", "name",
