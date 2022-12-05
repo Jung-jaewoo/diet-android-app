@@ -20,7 +20,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         TextView count;
         TextView review;
         TextView time;
-
+        TextView adderess;
         MyViewHolder(View view) {
             super(view);
             myPicture = view.findViewById(R.id.imageView);
@@ -28,6 +28,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             count = view.findViewById(R.id.count);
             review = view.findViewById(R.id.review);
             time = view.findViewById(R.id.time);
+            adderess = view.findViewById(R.id.address);
         }
     }
 
@@ -56,6 +57,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         myViewHolder.count.setText(myMealList.get(position).getMeal_count() + "");
         myViewHolder.review.setText(myMealList.get(position).getReview());
         myViewHolder.time.setText(myMealList.get(position).getMeal_time() + "");
+        myViewHolder.adderess.setText(myMealList.get(position).getAddress() + "");
     }
     @Override
     public int getItemCount() { return myMealList.size();

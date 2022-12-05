@@ -17,6 +17,7 @@ public class MyContentProvider extends ContentProvider {
     static final String MEAL_DATE = "meal_date";
     static final String MEAL_TIME = "meal_time";
     static final String IMAGE_URI = "image_uri";
+    static final String ADDRESS = "address";
 
     public MealDBManager dbManager;
 

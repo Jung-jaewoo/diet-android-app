@@ -143,8 +143,8 @@ public class MainActivity extends AppCompatActivity {
             addValues.put(MyContentProvider.IMAGE_URI,
                     "no image");
         }
-//        System.out.println(imageUri.toString());
-        System.out.println(getPackageName());
+        addValues.put(MyContentProvider.ADDRESS, MainFragment.getNowAddress());
+
         getContentResolver().insert(MyContentProvider.CONTENT_URI, addValues);
 
         imageUri = null;

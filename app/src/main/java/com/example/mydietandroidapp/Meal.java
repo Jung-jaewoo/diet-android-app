@@ -8,13 +8,15 @@ public class Meal {
     String review;
     String meal_time;
     String image_uri;
+    String address;
 
-    public Meal(String name, int meal_count, String review, String meal_time, String image_uri) {
+    public Meal(String name, int meal_count, String review, String meal_time, String image_uri, String address) {
         this.name = name;
         this.meal_count = meal_count;
         this.review = review;
         this.meal_time = meal_time;
         this.image_uri = image_uri;
+        this.address = address;
     }
 
     public String getName() {
@@ -35,5 +37,9 @@ public class Meal {
 
     public int getMeal_count() {
         return meal_count;
+    }
+
+    public String getAddress() {
+        return address;
     }
 }
