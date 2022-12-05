@@ -119,17 +119,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <com.google.android.gms.maps.MapView
-        android:id="@+id/mapView"
-        android:name="com.google.android.gms.maps.MapFragment"
-        android:layout_width="123dp"
-        android:layout_height="108dp"
-        android:layout_marginBottom="200dp"
-        android:foreground="@android:drawable/ic_dialog_map"
-        android:onClick="navigateGoogleMap"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+    <FrameLayout
+        android:id="@+id/mainFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </FrameLayout>
 
     <ImageView
         android:id="@+id/image_view"

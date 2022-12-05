@@ -48,6 +48,15 @@ public class MainActivity extends AppCompatActivity {
         InitializeTimeView();
         InitializeDateListener();
         InitializeTimeListener();
+
+        if (savedInstanceState == null) {
+
+            MainFragment mainFragment = new MainFragment();
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.mainFragment, mainFragment, "main")
+                    .commit();
+        }
+
     }
 
     public void InitializeDateView() {
