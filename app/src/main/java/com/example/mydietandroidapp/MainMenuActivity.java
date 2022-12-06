@@ -1,71 +1,45 @@
 package com.example.mydietandroidapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.TimePicker;
+import android.view.MenuItem;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainMenuActivity extends AppCompatActivity {
 
-    Button navigate_btn;
-    Button navigate_btn2;
-    Button navigate_btn3;
+    BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
-        navigate_btn = (Button) findViewById(R.id.inputMealButton);
-        navigate_btn.setOnClickListener(new View.OnClickListener() {
+        // bottom nav 설정
+        bottomNavigationView = findViewById(R.id.bottomNav);
+        // 처음화면
+        getSupportFragmentManager().beginTransaction().add(R.id.main_frame, new BlankFragment1()).commit(); //FrameLayout에 fragment.xml 띄우기
+
+        //바텀 네비게이션뷰 안의 아이템 설정
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent("com.example.mydietandroidapp.MainActivity");
-                startActivity(intent);
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    //item을 클릭시 id값을 가져와 FrameLayout에 fragment.xml띄우기
+                    case R.id.item_fragment1:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, new MainFrame2()).commit();
+                        break;
+                    case R.id.item_fragment2:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, new MainFrame()).commit();
+                        break;
+                    case R.id.item_fragment3:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, new BlankFragment1()).commit();
+                        break;
+                }
+                return true;
             }
         });
-
-        navigate_btn2 = (Button) findViewById(R.id.showMealButton);
-        navigate_btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent("com.example.mydietandroidapp.MainActivity2");
-                startActivity(intent);
-            }
-        });
-
-//        navigate_btn3 = (Button) findViewById(R.id.analyzeMealButton);
-//        navigate_btn3.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent("com.example.mydietandroidapp.LAUNCH4");
-//                startActivity(intent);
-//            }
-//        });
     }
-
-    public void navigateInputMeal(View view) {
-        Intent intent = new Intent(".MainActivity");
-        startActivity(intent);
-    }
-
-    public void navigateShowMeal(View view) {
-        Intent intent = new Intent(".MainActivity2");
-        startActivity(intent);
-    }
-
-//    public void navigateMealAnalyze(View view) {
-//        Intent intent = new Intent(".MainActivity4");
-//        startActivity(intent);
-//    }
-
 }

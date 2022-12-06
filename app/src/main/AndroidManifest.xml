@@ -32,24 +32,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MainActivity2"
-            android:exported="false"
-            tools:ignore="AppLinkUrlError">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <action android:name="com.example.mydietandroidapp.MainActivity2" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".MealList"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
 
         <provider
             android:name=".MyContentProvider"
@@ -58,7 +40,7 @@
             android:exported="true" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".MainFrame"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />

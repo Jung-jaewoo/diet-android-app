@@ -1,15 +1,18 @@
 package com.example.mydietandroidapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
+import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -17,7 +20,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainFrame extends Fragment {
     private final int GET_GALLERY_IMAGE = 200;
     private ImageView imageView;
     private Uri imageUri;
@@ -26,13 +29,11 @@ public class MainActivity extends AppCompatActivity {
     private DatePickerDialog.OnDateSetListener dateCallbackMethod;
     private TimePickerDialog.OnTimeSetListener timeCallbackMethod;
 
+    public void onStart(Bundle savedInstanceState) {
+        super.onStart(); //savedInstanceState 확인해야함
+        getActivity().setContentView(R.layout.fragment_main);
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        imageView = findViewById(R.id.image_view);
+        imageView = getView().findViewById(R.id.image_view);
 
         InitializeDateView();
         InitializeTimeView();
@@ -42,15 +43,21 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
 
             MainFragment mainFragment = new MainFragment();
-            getSupportFragmentManager().beginTransaction()
+            getActivity().getSupportFragmentManager().beginTransaction()
                     .replace(R.id.mainFragment, mainFragment, "main")
                     .commit();
         }
+    }
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        return inflater.inflate(R.layout.fragment_main, container, false);
     }
 
     public void InitializeDateView() {
-        textView_Date = (TextView) findViewById(R.id.mealDate);
+        textView_Date = (TextView) getView().findViewById(R.id.mealDate);
     }
 
     public void InitializeDateListener() {
@@ -63,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void InitializeTimeView() {
-        textView_Time = (TextView) findViewById(R.id.mealTime);
+        textView_Time = (TextView) getView().findViewById(R.id.mealTime);
     }
 
     public void InitializeTimeListener() {
@@ -76,13 +83,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void OnClickTimeHandler(View view) {
-        TimePickerDialog dialog = new TimePickerDialog(this, timeCallbackMethod, 8, 10, true);
+        TimePickerDialog dialog = new TimePickerDialog(getActivity(), timeCallbackMethod, 8, 10, true);
 
         dialog.show();
     }
 
     public void OnClickDateHandler(View view) {
-        DatePickerDialog dialog = new DatePickerDialog(this, dateCallbackMethod, 2022, 12, 1);
+        DatePickerDialog dialog = new DatePickerDialog(getActivity(), dateCallbackMethod, 2022, 12, 1);
 
         dialog.show();
     }
@@ -95,17 +102,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == GET_GALLERY_IMAGE && resultCode == RESULT_OK && data != null && data.getData() != null) {
+        if (requestCode == GET_GALLERY_IMAGE && resultCode == Activity.RESULT_OK && data != null && data.getData() != null) {
             imageUri = data.getData();
             imageView.setImageURI(imageUri);
         }
-    }
-
-    public void navigateGoogleMap(View view) {
-        Intent intent = new Intent(".MapsActivity");
-        startActivity(intent);
     }
 
     public void addMeal(View view) {
@@ -113,17 +115,17 @@ public class MainActivity extends AppCompatActivity {
         // 음식 사진과 식사 장소 입력 부 추가해야함.
         ContentValues addValues = new ContentValues();
         addValues.put(MyContentProvider.NAME,
-                ((EditText) findViewById(R.id.foodName)).getText().toString());
+                ((EditText) getView().findViewById(R.id.foodName)).getText().toString());
         addValues.put(MyContentProvider.MEAL_COUNT,
-                Integer.parseInt(((EditText) findViewById(R.id.mealCount)).getText().toString()));
+                Integer.parseInt(((EditText) getView().findViewById(R.id.mealCount)).getText().toString()));
         addValues.put(MyContentProvider.REVIEW,
-                ((EditText) findViewById(R.id.mealReview)).getText().toString());
+                ((EditText) getView().findViewById(R.id.mealReview)).getText().toString());
         addValues.put(MyContentProvider.MEAL_DATE,
-                ((TextView) findViewById(R.id.mealDate)).getText().toString());
+                ((TextView) getView().findViewById(R.id.mealDate)).getText().toString());
         addValues.put(MyContentProvider.MEAL_TIME,
-                ((TextView) findViewById(R.id.mealTime)).getText().toString());
+                ((TextView) getView().findViewById(R.id.mealTime)).getText().toString());
 
-        System.out.println(((TextView) findViewById(R.id.mealTime)).getText().toString());
+        System.out.println(((TextView) getView().findViewById(R.id.mealTime)).getText().toString());
         if (imageUri != null) {
 
             addValues.put(MyContentProvider.IMAGE_URI,
@@ -135,10 +137,10 @@ public class MainActivity extends AppCompatActivity {
         }
         addValues.put(MyContentProvider.ADDRESS, MainFragment.getNowAddress());
 
-        getContentResolver().insert(MyContentProvider.CONTENT_URI, addValues);
+        getActivity().getContentResolver().insert(MyContentProvider.CONTENT_URI, addValues);
 
         imageUri = null;
-        Toast.makeText(getBaseContext(),
+        Toast.makeText(getActivity().getBaseContext(),
                 "Record Added", Toast.LENGTH_LONG).show();
 
     }

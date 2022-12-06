@@ -1,33 +1,33 @@
 package com.example.mydietandroidapp;
+import android.database.Cursor;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CalendarView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.database.Cursor;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.CalendarView;
-
 import java.util.ArrayList;
 
-public class MainActivity2 extends AppCompatActivity {
+public class MainFrame2 extends Fragment {
     private RecyclerView myRecyclerView;
     private RecyclerView.LayoutManager myLayoutManager;
     public static ArrayList<Meal> mealsInfo;
     private CalendarView calendarView;
     private String date;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
-        calendarView = findViewById(R.id.calendarView);
+    public void onStart(Bundle savedInstanceState) {
+        super.onStart();
+        getActivity().setContentView(R.layout.fragment_main2);
+        calendarView = getView().findViewById(R.id.calendarView);
 
-        myRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        myRecyclerView = (RecyclerView) getView().findViewById(R.id.recyclerView);
         myRecyclerView.setHasFixedSize(true);
-        myLayoutManager = new LinearLayoutManager(this);
+        myLayoutManager = new LinearLayoutManager(getActivity());
         myRecyclerView.setLayoutManager(myLayoutManager);
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -39,11 +39,18 @@ public class MainActivity2 extends AppCompatActivity {
         });
     }
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        return inflater.inflate(R.layout.fragment_main2, container, false);
+    }
+
     public void getStudents() {
         mealsInfo = new ArrayList<>();
         String[] columns = new String[]{"_id", "name",
                 "meal_count", "review", "meal_date", "meal_time", "image_uri", "address"};
-        Cursor c = getContentResolver().query(MyContentProvider.CONTENT_URI, columns, null,
+        Cursor c = getActivity().getContentResolver().query(MyContentProvider.CONTENT_URI, columns, null,
                 null, null, null);
         System.out.println("date" + date);
         if (c != null) {
