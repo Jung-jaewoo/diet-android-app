@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#CBF6E1"
+    android:background="#FFFFFF"
     tools:context=".MainMenuActivity">
 
     <Button
@@ -13,7 +13,6 @@
         android:layout_height="80dp"
         android:layout_marginTop="252dp"
         android:layout_marginEnd="32dp"
-        android:backgroundTint="#4CAF50"
         android:onClick="navigateShowMeal"
         android:text="@string/textShowMeal"
         android:textSize="20sp"
@@ -26,7 +25,6 @@
         android:layout_height="80dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="252dp"
-        android:backgroundTint="#4CAF50"
         android:backgroundTintMode="add"
         android:onClick="navigateInputMeal"
         android:text="@string/textInputMeal"
@@ -40,7 +38,6 @@
         android:layout_width="160dp"
         android:layout_height="80dp"
         android:layout_marginStart="32dp"
-        android:backgroundTint="#4CAF50"
         android:text="@string/textAnalyzeMeal"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
