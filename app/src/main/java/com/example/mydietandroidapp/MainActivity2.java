@@ -42,7 +42,7 @@ public class MainActivity2 extends AppCompatActivity {
     public void getStudents() {
         mealsInfo = new ArrayList<>();
         String[] columns = new String[]{"_id", "name",
-                "meal_count", "review", "meal_date", "meal_time", "image_uri"};
+                "meal_count", "review", "meal_date", "meal_time", "image_uri", "address"};
         Cursor c = getContentResolver().query(MyContentProvider.CONTENT_URI, columns, null,
                 null, null, null);
         System.out.println("date" + date);
@@ -55,9 +55,10 @@ public class MainActivity2 extends AppCompatActivity {
                 String meal_date = c.getString(4);
                 String meal_time = c.getString(5);
                 String image_uri = c.getString(6);
+                String address = c.getString(7);
                 System.out.println(meal_date);
                 if (meal_date.equals(date)) {
-                    mealsInfo.add(new Meal(name, meal_count, review, meal_time, image_uri));
+                    mealsInfo.add(new Meal(name, meal_count, review, meal_time, image_uri, address));
                 }
             }
             c.close();
