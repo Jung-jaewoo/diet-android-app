@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
     private final int GET_GALLERY_IMAGE = 200;
     private ImageView imageView;
     private Uri imageUri;
-    Button navigate_btn2;
     private TextView textView_Date;
     private TextView textView_Time;
     private DatePickerDialog.OnDateSetListener dateCallbackMethod;
@@ -34,15 +33,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         imageView = findViewById(R.id.image_view);
-
-        navigate_btn2 = (Button) findViewById(R.id.navigate_btn2);
-        navigate_btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent("com.example.mydietandroidapp.LAUNCH2");
-                startActivity(intent);
-            }
-        });
 
         InitializeDateView();
         InitializeTimeView();

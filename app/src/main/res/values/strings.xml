@@ -2,14 +2,17 @@
     <string name="app_name">MyDietAndroidApp</string>
     <string name="textInputFoodImage">음식 사진 첨부</string>
     <string name="textInputFoodName">음식 이름 입력</string>
-    <string name="textInputFoodCount">음식 수량 입력</string>
-    <string name="textInputFoodReview">음식 소감 또는 평 입력</string>
-    <string name="textInputFoodTime">식사 시간 입력</string>
-    <string name="textInputFoodPlace">구글 맵을 통한 식사 장소 입력</string>
-    <string name="textInputFood">식사 입력</string>
+    <string name="textInputFoodCount">음식 수량을 입력해주세요</string>
+    <string name="textInputFoodReview">음식 소감,평을 입력주세요</string>
+    <string name="textInputFoodDate">식사힌 날짜를 선택해주세요</string>
+    <string name="textInputFoodTime">식사한 시간을 선택해주세요</string>
+    <string name="textInputFood">음식 이름을 입력해주세요</string>
+    <string name="textButtonInputFoodDate">날짜 선택</string>
+    <string name="textButtonInputFoodTime">시간 선택</string>
     <string name="title_activity_maps">MapsActivity</string>
     <string name="textMap">지도</string>
     <string name="textInputMeal">식사 입력하기</string>
     <string name="textShowMeal">식사 보기</string>
     <string name="textAnalyzeMeal">식사 분석</string>
+    <string name="textInputFoodInfo">음식 등록</string>
 </resources>

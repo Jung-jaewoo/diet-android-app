@@ -6,145 +6,128 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/foodName"
-        android:layout_width="170dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="172dp"
-        android:hint="@string/textInputFood"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/mealReview"
-        android:layout_width="170dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="320dp"
-        android:clickable="false"
-        android:editable="true"
-        android:hint="@string/textInputFoodReview"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="524dp"
-        android:onClick="navigateGoogleMap"
-        android:text="@string/textInputFoodPlace"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="156dp"
-        android:layout_marginBottom="60dp"
-        android:onClick="addMeal"
-        android:text="@string/textInputFood"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/mealCount"
-        android:layout_width="170dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="244dp"
-        android:hint="@string/textInputFoodCount"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="80dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="456dp"
-        android:onClick="OnClickTimeHandler"
-        android:text="버튼"
-        app:layout_constraintStart_toEndOf="@+id/mealTime"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/mealTime"
-        android:layout_width="170dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="456dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="80dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="396dp"
-        android:onClick="OnClickDateHandler"
-        android:text="Button"
-        app:layout_constraintStart_toEndOf="@+id/mealDate"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/mealDate"
-        android:layout_width="170dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="396dp"
-        android:hint="@string/textInputFoodTime"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="108dp"
-        android:onClick="getStudents"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <FrameLayout
-        android:id="@+id/mainFragment"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    </FrameLayout>
 
-    <ImageView
-        android:id="@+id/image_view"
-        android:layout_width="94dp"
-        android:layout_height="88dp"
-        android:layout_marginTop="36dp"
-        android:onClick="onClickGallery"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_gallery" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/navigate_btn2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="228dp"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="273dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/image_view"
+                    android:layout_width="174dp"
+                    android:layout_height="161dp"
+                    android:onClick="onClickGallery"
+                    app:srcCompat="@android:drawable/ic_menu_gallery" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:gravity="center">
+
+                <EditText
+                    android:id="@+id/foodName"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/textInputFood" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:gravity="center">
+
+                <EditText
+                    android:id="@+id/mealCount"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/textInputFoodCount" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:gravity="center">
+
+                <EditText
+                    android:id="@+id/mealReview"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:editable="true"
+                    android:hint="@string/textInputFoodReview" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/mealDate"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/textInputFoodDate" />
+
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="OnClickDateHandler"
+                    android:text="@string/textButtonInputFoodDate" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/mealTime"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/textInputFoodTime" />
+
+                <Button
+                    android:id="@+id/button4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="OnClickTimeHandler"
+                    android:text="@string/textButtonInputFoodTime" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="253dp">
+
+                <FrameLayout
+                    android:id="@+id/mainFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="251dp">
+
+                </FrameLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="107dp"
+                android:layout_height="44dp"
+                android:onClick="addMeal"
+                android:text="@string/textInputFoodInfo" />
+
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
