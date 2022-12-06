@@ -31,14 +31,8 @@ public class MainFrame extends Fragment {
 
     public void onStart(Bundle savedInstanceState) {
         super.onStart(); //savedInstanceState 확인해야함
+
         getActivity().setContentView(R.layout.fragment_main);
-
-        imageView = getView().findViewById(R.id.image_view);
-
-        InitializeDateView();
-        InitializeTimeView();
-        InitializeDateListener();
-        InitializeTimeListener();
 
         if (savedInstanceState == null) {
 
@@ -52,12 +46,21 @@ public class MainFrame extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
-        return inflater.inflate(R.layout.fragment_main, container, false);
+
+        imageView = rootView.findViewById(R.id.image_view);
+
+        InitializeDateView(rootView);
+        InitializeTimeView(rootView);
+        InitializeDateListener();
+        InitializeTimeListener();
+
+        return rootView;
     }
 
-    public void InitializeDateView() {
-        textView_Date = (TextView) getView().findViewById(R.id.mealDate);
+    public void InitializeDateView(View rootView) {
+        textView_Date = (TextView) rootView.findViewById(R.id.mealDate);
     }
 
     public void InitializeDateListener() {
@@ -69,8 +72,8 @@ public class MainFrame extends Fragment {
         };
     }
 
-    public void InitializeTimeView() {
-        textView_Time = (TextView) getView().findViewById(R.id.mealTime);
+    public void InitializeTimeView(View rootView) {
+        textView_Time = (TextView) rootView.findViewById(R.id.mealTime);
     }
 
     public void InitializeTimeListener() {
@@ -82,13 +85,13 @@ public class MainFrame extends Fragment {
         };
     }
 
-    public void OnClickTimeHandler(View view) {
+    public void OnClickTimeHandler() {
         TimePickerDialog dialog = new TimePickerDialog(getActivity(), timeCallbackMethod, 8, 10, true);
 
         dialog.show();
     }
 
-    public void OnClickDateHandler(View view) {
+    public void OnClickDateHandler() {
         DatePickerDialog dialog = new DatePickerDialog(getActivity(), dateCallbackMethod, 2022, 12, 1);
 
         dialog.show();

@@ -7,13 +7,15 @@
     android:background="#FFFFFF"
     tools:context=".MainMenuActivity">
 
+
     <FrameLayout
         android:id="@+id/main_frame"
         android:layout_width="413dp"
         android:layout_height="673dp"
         app:layout_constraintBottom_toTopOf="@+id/bottomNav"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
+        tools:layout_editor_absoluteX="0dp"
+        tools:ignore="MissingConstraints" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
