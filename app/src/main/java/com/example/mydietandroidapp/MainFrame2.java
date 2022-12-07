@@ -23,28 +23,35 @@ public class MainFrame2 extends Fragment {
     public void onStart(Bundle savedInstanceState) {
         super.onStart();
         getActivity().setContentView(R.layout.fragment_main2);
-        calendarView = getView().findViewById(R.id.calendarView);
 
-        myRecyclerView = (RecyclerView) getView().findViewById(R.id.recyclerView);
-        myRecyclerView.setHasFixedSize(true);
-        myLayoutManager = new LinearLayoutManager(getActivity());
-        myRecyclerView.setLayoutManager(myLayoutManager);
 
-        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-            @Override
-            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                date = year + "년 " + (month + 1) + "월 " + dayOfMonth + "일";
-                getStudents();
-            }
-        });
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.fragment_main2, container, false);
+        View v = inflater.inflate(R.layout.fragment_main2, container, false);
+
+        myRecyclerView = (RecyclerView)v.findViewById(R.id.recyclerView);
+        myRecyclerView.setHasFixedSize(true);
+        myLayoutManager = new LinearLayoutManager(getActivity());
+        myRecyclerView.setLayoutManager(myLayoutManager);
+
+        calendarView = (CalendarView) v.findViewById(R.id.calendarView);
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                date = year + "년 " + (month + 1) + "월 " + dayOfMonth + "일";
+                System.out.println("selected");
+                getStudents();
+            }
+        });
+
+        return v;
     }
+
 
     public void getStudents() {
         mealsInfo = new ArrayList<>();
