@@ -65,7 +65,7 @@ public class MainFrame extends Fragment implements View.OnClickListener, OnMapRe
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
-        ImageView imageView = (ImageView) rootView.findViewById(R.id.image_view);
+        imageView = (ImageView) rootView.findViewById(R.id.image_view);
         Button dateBtn = (Button) rootView.findViewById(R.id.button3);
         Button timeBtn = (Button) rootView.findViewById(R.id.button4);
         Button addBtn = (Button) rootView.findViewById(R.id.button);
@@ -156,8 +156,11 @@ public class MainFrame extends Fragment implements View.OnClickListener, OnMapRe
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        System.out.println("갤러리 :" + requestCode + " " + resultCode + " " + data);
         super.onActivityResult(requestCode, resultCode, data);
+
         if (requestCode == GET_GALLERY_IMAGE && resultCode == Activity.RESULT_OK && data != null && data.getData() != null) {
+            System.out.println("이프문");
             imageUri = data.getData();
             imageView.setImageURI(imageUri);
         }

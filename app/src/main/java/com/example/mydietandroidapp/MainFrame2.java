@@ -72,7 +72,7 @@ public class MainFrame2 extends Fragment {
                 String address = c.getString(7);
                 System.out.println(meal_date);
                 if (meal_date.equals(date)) {
-                    mealsInfo.add(new Meal(name, meal_count, review, meal_time, image_uri, address));
+                    mealsInfo.add(new Meal(name, meal_count, review, meal_time, image_uri, address, date));
                 }
             }
             c.close();

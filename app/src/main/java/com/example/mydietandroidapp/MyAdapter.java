@@ -1,5 +1,7 @@
 package com.example.mydietandroidapp;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,28 +9,21 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
+public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        ImageView myPicture;
-        TextView name;
-        TextView count;
-        TextView review;
-        TextView time;
-        TextView adderess;
+
+        TextView textView;
+
         MyViewHolder(View view) {
             super(view);
-            myPicture = view.findViewById(R.id.imageView);
-            name = view.findViewById(R.id.name);
-            count = view.findViewById(R.id.count);
-            review = view.findViewById(R.id.review);
-            time = view.findViewById(R.id.time);
-            adderess = view.findViewById(R.id.address);
+            textView = view.findViewById(R.id.textView);
         }
     }
 
@@ -45,21 +40,37 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(MyAdapter.MyViewHolder holder, final int
+    public void onBindViewHolder(MyAdapter.MyViewHolder holder, @SuppressLint("RecyclerView") final int
             position) {
         MyViewHolder myViewHolder = (MyViewHolder) holder;
-        if(myMealList.get(position).getImage_uri().equals("no image")){
-            myViewHolder.myPicture.setImageResource(R.drawable.defaultimg);
-        }else{
-            myViewHolder.myPicture.setImageURI(Uri.parse(myMealList.get(position).getImage_uri()));
-        }
-        myViewHolder.name.setText(myMealList.get(position).getName());
-        myViewHolder.count.setText(myMealList.get(position).getMeal_count() + "");
-        myViewHolder.review.setText(myMealList.get(position).getReview());
-        myViewHolder.time.setText(myMealList.get(position).getMeal_time() + "");
-        myViewHolder.adderess.setText(myMealList.get(position).getAddress() + "");
+
+//        myViewHolder.name.setText(myMealList.get(position).getName());
+//        myViewHolder.count.setText(myMealList.get(position).getMeal_count() + "");
+//        myViewHolder.review.setText(myMealList.get(position).getReview());
+//        myViewHolder.time.setText(myMealList.get(position).getMeal_time() + "");
+//        myViewHolder.adderess.setText(myMealList.get(position).getAddress() + "")
+//        ;
+        myViewHolder.textView.setText("식사 리스트");
+        myViewHolder.textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), MealDetailActivity.class);
+                intent.putExtra("image", myMealList.get(position).getImage_uri());
+                intent.putExtra("name", myMealList.get(position).getName());
+                intent.putExtra("count", myMealList.get(position).getMeal_count() + "");
+                intent.putExtra("review", myMealList.get(position).getReview());
+                intent.putExtra("time",myMealList.get(position).getMeal_time() + "" );
+                intent.putExtra("address",myMealList.get(position).getAddress() + "" );
+                intent.putExtra("date", myMealList.get(position).getDate() + "");
+
+                v.getContext().startActivity(intent);
+
+            }
+        });
     }
+
     @Override
-    public int getItemCount() { return myMealList.size();
+    public int getItemCount() {
+        return myMealList.size();
     }
 }
