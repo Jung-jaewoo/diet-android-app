@@ -113,12 +113,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="253dp">
 
-                <FrameLayout
-                    android:id="@+id/mainFragment"
+                <com.google.android.gms.maps.MapView
+                    android:id="@+id/mapview"
                     android:layout_width="match_parent"
                     android:layout_height="251dp">
 
-                </FrameLayout>
+                </com.google.android.gms.maps.MapView>
             </LinearLayout>
 
             <Button

@@ -1,5 +1,6 @@
 package com.example.mydietandroidapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -8,6 +9,8 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
@@ -22,7 +25,21 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-public class MainFrame extends Fragment implements View.OnClickListener {
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
+
+public class MainFrame extends Fragment implements View.OnClickListener, OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
     private final int GET_GALLERY_IMAGE = 200;
     private ImageView imageView;
     private Uri imageUri;
@@ -31,18 +48,16 @@ public class MainFrame extends Fragment implements View.OnClickListener {
     private DatePickerDialog.OnDateSetListener dateCallbackMethod;
     private TimePickerDialog.OnTimeSetListener timeCallbackMethod;
 
+    MapView mapView;
+    Marker marker;
+    public static String nowAddress = "서울특별시 중구 필동로1길 30";
+
     public void onStart(Bundle savedInstanceState) {
         super.onStart(); //savedInstanceState 확인해야함
 
         getActivity().setContentView(R.layout.fragment_main);
 
-        if (savedInstanceState == null) {
 
-            MainFragment mainFragment = new MainFragment();
-            getActivity().getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.mainFragment, mainFragment, "main")
-                    .commit();
-        }
     }
 
     @Override
@@ -66,6 +81,12 @@ public class MainFrame extends Fragment implements View.OnClickListener {
         InitializeDateListener();
         InitializeTimeListener();
 
+        //
+        mapView = (MapView) rootView.findViewById(R.id.mapview);
+        mapView.onCreate(savedInstanceState);
+        System.out.println("구글맵");
+        mapView.getMapAsync(this);
+        //
 
         return rootView;
     }
@@ -167,7 +188,7 @@ public class MainFrame extends Fragment implements View.OnClickListener {
             addValues.put(MyContentProvider.IMAGE_URI,
                     "no image");
         }
-        addValues.put(MyContentProvider.ADDRESS, MainFragment.getNowAddress());
+        addValues.put(MyContentProvider.ADDRESS, getNowAddress());
 
         getActivity().getContentResolver().insert(MyContentProvider.CONTENT_URI, addValues);
 
@@ -176,5 +197,92 @@ public class MainFrame extends Fragment implements View.OnClickListener {
                 "Record Added", Toast.LENGTH_LONG).show();
 
     }
+
+
+    //*******
+
+    public static String getNowAddress() {
+        return nowAddress;
+    }
+
+    private void getAddress(LatLng position) {
+        Geocoder geoCoder = new Geocoder(this.getContext(), Locale.KOREA);   // Geocoder 로 자기 나라에 맞게 설정
+        List<Address> address = null;
+        try {
+                address = geoCoder.getFromLocation(position.latitude, position.longitude, 1);
+                if (address != null && address.size() > 0) {
+                    nowAddress = address.get(0).getAddressLine(0).toString();
+                    System.out.println(nowAddress);
+                }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public void onResume() {
+        mapView.onResume();
+        super.onResume();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mapView.onDestroy();
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mapView.onLowMemory();
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+
+        MapsInitializer.initialize(this.getActivity());
+
+        // Updates the location and zoom of the MapView
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(37.55802, 126.99857), 14);
+
+        googleMap.animateCamera(cameraUpdate);
+
+        marker = googleMap.addMarker(new MarkerOptions()
+                .position(new LatLng(37.55802, 126.99857))
+                .title("동국대학교"));
+
+
+        googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            public void onMapClick(LatLng point) {
+                marker.remove();
+                System.out.println("포인트"+point.latitude+"" + point.longitude);
+                marker = googleMap.addMarker(new MarkerOptions().position(new LatLng(point.latitude, point.longitude)).title("위치")
+                );
+                System.out.println(point.latitude + "" + point.longitude);
+                getAddress(point);
+            }
+        });
+
+    }
+
+    @Override
+    public boolean onMarkerClick(@NonNull Marker marker) {
+        String markerId = marker.getId();
+        // 선택한 타겟의 위치
+        LatLng location = marker.getPosition();
+        System.out.println("여");
+        System.out.println("마커 클릭 Marker ID : "
+                + markerId + "(" + location.latitude + " " + location.longitude + ")");
+        return false;
+    }
+    //*****
 
 }
