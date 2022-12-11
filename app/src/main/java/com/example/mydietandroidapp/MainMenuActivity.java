@@ -54,7 +54,7 @@ public class MainMenuActivity extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, mainFrame).commit();
                         break;
                     case R.id.item_fragment3:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, new BlankFragment1()).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, new StatisticFragment()).commit();
                         break;
                 }
                 return true;

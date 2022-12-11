@@ -84,7 +84,6 @@ public class MainFrame extends Fragment implements View.OnClickListener, OnMapRe
         //
         mapView = (MapView) rootView.findViewById(R.id.mapview);
         mapView.onCreate(savedInstanceState);
-        System.out.println("구글맵");
         mapView.getMapAsync(this);
         //
 

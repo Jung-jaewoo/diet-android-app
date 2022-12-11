@@ -2,14 +2,12 @@ package com.example.mydietandroidapp;
 
 import static android.database.sqlite.SQLiteDatabase.openOrCreateDatabase;
 
-import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -22,11 +20,14 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-public class BlankFragment1 extends Fragment {
+public class StatisticFragment extends Fragment {
     private RecyclerView myRecyclerView;
     private RecyclerView.LayoutManager myLayoutManager;
     public static ArrayList<MealKcal> mealsKcalInfo;
-
+    private TextView topTextView;
+    private TextView bottomTextView;
+    private String dCurrentDate;
+    public Integer dayTotalKcal = 0;
     Map<String, Integer> kcalMap = new HashMap<String, Integer>() {
         {
             put("banana", 100);
@@ -37,7 +38,7 @@ public class BlankFragment1 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_blank, container, false);
+        View v = inflater.inflate(R.layout.fragment_statistic, container, false);
         // Inflate the layout for this fragment
         myRecyclerView = (RecyclerView)v.findViewById(R.id.recyclerView);
         myRecyclerView.setHasFixedSize(true);
@@ -45,6 +46,12 @@ public class BlankFragment1 extends Fragment {
         myRecyclerView.setLayoutManager(myLayoutManager);
 
         getCurrentMeals();
+        topTextView = v.findViewById(R.id.textView5);
+        topTextView.setText(dCurrentDate+"\n오늘 하루 식사별 총 칼로리");
+        getDayTotalKcal();
+        bottomTextView = v.findViewById(R.id.textView4);
+        bottomTextView.setText("오늘 섭취한 총 칼로리 : "+ dayTotalKcal);
+
         return v;
     }
 
@@ -55,7 +62,7 @@ public class BlankFragment1 extends Fragment {
                 "meal_count", "review", "meal_date", "meal_time", "image_uri", "address"};
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy년 MM월 dd일", Locale.KOREA);
         Date date = new Date();
-        String dCurrentDate = formatter.format(date);
+        dCurrentDate = formatter.format(date);
 
 //        MealDBManager dbHelper = new MealDBManager(this);
 //        SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -81,7 +88,6 @@ public class BlankFragment1 extends Fragment {
                     String meal_time = c.getString(5);
                     String image_uri = c.getString(6);
                     String address = c.getString(7);
-                    System.out.println(meal_date);
                     mealsKcalInfo.add( new MealKcal(name, meal_date, meal_time, kcalMap.get(name), meal_count ));
                 }
             }
@@ -91,4 +97,12 @@ public class BlankFragment1 extends Fragment {
         MyKcalAdapter myAdapter = new MyKcalAdapter(mealsKcalInfo);
         myRecyclerView.setAdapter(myAdapter);
     }
+
+    public void getDayTotalKcal(){
+        for(MealKcal item : mealsKcalInfo){
+            System.out.println(item.getKcal());
+            dayTotalKcal += item.getKcal() * item.getCount();
+        }
+    }
 }
+
