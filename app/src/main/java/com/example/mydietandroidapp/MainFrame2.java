@@ -45,7 +45,7 @@ public class MainFrame2 extends Fragment {
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 date = year + "년 " + (month + 1) + "월 " + dayOfMonth + "일";
                 System.out.println("selected");
-                getStudents();
+                getMeals();
             }
         });
 
@@ -53,7 +53,7 @@ public class MainFrame2 extends Fragment {
     }
 
 
-    public void getStudents() {
+    public void getMeals() {
         mealsInfo = new ArrayList<>();
         String[] columns = new String[]{"_id", "name",
                 "meal_count", "review", "meal_date", "meal_time", "image_uri", "address"};
