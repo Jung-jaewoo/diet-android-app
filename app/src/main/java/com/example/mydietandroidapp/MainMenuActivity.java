@@ -2,20 +2,14 @@ package com.example.mydietandroidapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.TimePicker;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -38,10 +32,11 @@ public class MainMenuActivity extends AppCompatActivity {
         // bottom nav 설정
         bottomNavigationView = findViewById(R.id.bottomNav);
         // 처음화면
-        getSupportFragmentManager().beginTransaction().add(R.id.main_frame, new BlankFragment1()).commit(); //FrameLayout에 fragment.xml 띄우기
+        getSupportFragmentManager().beginTransaction().add(R.id.main_frame, new HomeFragment()).commit(); //FrameLayout에 fragment.xml 띄우기
 
         MainFrame mainFrame = new MainFrame();
         MainFrame2 mainFrame2 = new MainFrame2();
+        HomeFragment homeFragment = new HomeFragment();
 
         //바텀 네비게이션뷰 안의 아이템 설정
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -49,6 +44,9 @@ public class MainMenuActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     //item을 클릭시 id값을 가져와 FrameLayout에 fragment.xml띄우기
+                    case R.id.item_fragment:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, homeFragment).commit();
+                        break;
                     case R.id.item_fragment1:
                         getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, mainFrame2).commit();
                         break;
