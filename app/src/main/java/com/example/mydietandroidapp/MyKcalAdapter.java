@@ -50,8 +50,10 @@ public class MyKcalAdapter extends RecyclerView.Adapter<MyKcalAdapter.MyViewHold
 //        myViewHolder.time.setText(myMealList.get(position).getMeal_time() + "");
 //        myViewHolder.adderess.setText(myMealList.get(position).getAddress() + "")
 //        ;
-        myViewHolder.textView.setText(position + 1 + ". " + myMealKcalList.get(position).getDate() +myMealKcalList.get(position).getTime() +myMealKcalList.get(position).getName()
-                + "\nkcal : " +myMealKcalList.get(position).getKcal() + "\ncount : " + myMealKcalList.get(position).getCount() +  "\n총 칼로리: " + (myMealKcalList.get(position).getKcal() * myMealKcalList.get(position).getCount()));}
+        myViewHolder.textView.setText(position + 1 + ". " + myMealKcalList.get(position).getDate()
+                + "\n" + myMealKcalList.get(position).getTime() +myMealKcalList.get(position).getName()
+                + "\nkcal : " +myMealKcalList.get(position).getKcal() + "\ncount : " + myMealKcalList.get(position).getCount()
+                +  "\n총 칼로리: " + (myMealKcalList.get(position).getKcal() * myMealKcalList.get(position).getCount()));}
 
     @Override
     public int getItemCount() {
