@@ -50,7 +50,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
 //        myViewHolder.time.setText(myMealList.get(position).getMeal_time() + "");
 //        myViewHolder.adderess.setText(myMealList.get(position).getAddress() + "")
 //        ;
-        myViewHolder.textView.setText("식사 리스트");
+        myViewHolder.textView.setText(position + 1 + ". " + myMealList.get(position).getName()
+                + "    " + myMealList.get(position).getMeal_time());
         myViewHolder.textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

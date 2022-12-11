@@ -23,6 +23,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="TextView"
+        android:textColor="#F4511E"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,6 +34,8 @@
         android:layout_marginStart="120dp"
         android:layout_marginTop="324dp"
         android:text="TextView"
+        android:textColor="#000000"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -43,6 +46,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="68dp"
         android:text="TextView"
+        android:textColor="#F4511E"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -53,6 +57,8 @@
         android:layout_marginStart="120dp"
         android:layout_marginTop="420dp"
         android:text="TextView"
+        android:textColor="#000000"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -63,6 +69,8 @@
         android:layout_marginStart="120dp"
         android:layout_marginTop="516dp"
         android:text="TextView"
+        android:textColor="#000000"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -73,6 +81,8 @@
         android:layout_marginStart="120dp"
         android:layout_marginTop="612dp"
         android:text="TextView"
+        android:textColor="#000000"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
