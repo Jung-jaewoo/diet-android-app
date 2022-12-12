@@ -14,5 +14,6 @@
         android:layout_weight="1"
         android:text="TextView"
         android:textColor="#FFFFFF"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        />
 </LinearLayout>
