@@ -30,8 +30,13 @@ public class StatisticFragment extends Fragment {
     public Integer dayTotalKcal = 0;
     Map<String, Integer> kcalMap = new HashMap<String, Integer>() {
         {
-            put("banana", 100);
-            put("apple", 200);
+            put("banana", 88);
+            put("apple", 52);
+            put("pizza", 266);
+            put("hamburger", 294);
+            put("chicken", 245);
+            put("ddukbokki",226);
+            put("samgyepsal", 517);
         }
     };
 

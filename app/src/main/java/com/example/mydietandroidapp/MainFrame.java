@@ -155,11 +155,9 @@ public class MainFrame extends Fragment implements View.OnClickListener, OnMapRe
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        System.out.println("갤러리 :" + requestCode + " " + resultCode + " " + data);
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == GET_GALLERY_IMAGE && resultCode == Activity.RESULT_OK && data != null && data.getData() != null) {
-            System.out.println("이프문");
             imageUri = data.getData();
             imageView.setImageURI(imageUri);
         }
@@ -180,7 +178,7 @@ public class MainFrame extends Fragment implements View.OnClickListener, OnMapRe
         addValues.put(MyContentProvider.MEAL_TIME,
                 ((TextView) getView().findViewById(R.id.mealTime)).getText().toString());
 
-        System.out.println(((TextView) getView().findViewById(R.id.mealTime)).getText().toString());
+
         if (imageUri != null) {
 
             addValues.put(MyContentProvider.IMAGE_URI,
@@ -250,7 +248,7 @@ public class MainFrame extends Fragment implements View.OnClickListener, OnMapRe
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
-        MapsInitializer.initialize(this.getActivity());
+        MapsInitializer.initialize(getActivity());
 
         // Updates the location and zoom of the MapView
         CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(37.55802, 126.99857), 14);
