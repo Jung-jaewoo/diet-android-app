@@ -17,7 +17,7 @@
    - 최근 식사에 대한 칼로리 량 
    
 
-## 🖥구현화면
+## 🖥 구현화면
 <img width="1464" alt="스크린샷 2022-12-12 오후 8 32 41" src="https://user-images.githubusercontent.com/94885018/207206360-8e509e55-3a97-45e8-99a1-7a18792e05d9.png">
 <img width="1464" alt="스크린샷 2022-12-12 오후 8 32 52" src="https://user-images.githubusercontent.com/94885018/207206450-84e5a3b5-b9c2-42aa-891f-340011a21a57.png">
 <img width="1464" alt="스크린샷 2022-12-12 오후 8 32 55" src="https://user-images.githubusercontent.com/94885018/207206459-e2819fb0-6981-4b9e-9de4-c6afb299d93d.png">
